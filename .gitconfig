@@ -1,0 +1,48 @@
+[user]
+  name = Stefan Chrobot
+  email = stefan@chrobot.io
+
+[push]
+  default = simple
+
+[alias]
+  commitx = !git add -A && git commit -m
+  fixup = commit --fixup
+  amend = commit --amend
+  amendx = commit --amend --no-edit
+  mergex = merge --no-ff
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lolm = log --graph --decorate --pretty=oneline --abbrev-commit master..
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+
+[color]
+  ui = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+
+[merge]
+  keepBackup = false
+  guitool = p4merge
+
+[mergetool]
+  prompt = false
+
+[mergetool "p4merge"]
+  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
+
+[diff]
+  guitool = p4merge
+
+[difftool]
+  prompt = false
+
+[difftool "p4merge"]
+  cmd = p4merge "$LOCAL" "$REMOTE"
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
