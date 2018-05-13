@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# 
+#
 # If not running interactively, don't do anything
 # The $- variable contains the currently set shell flags.
 # See (run) also:
-# 
+#
 #   $ help set
 #
 case $- in
@@ -13,23 +13,23 @@ case $- in
 esac
 
 
-# 
+#
 # Enable "**" to match recursively, i.e.: ls **/*.txt
-# 
+#
 # https://www.gnu.org/software/bash/manual/bash.html#The-Shopt-Builtin
-# 
+#
 # If on OSX, upgrade to bash 4.x.x for this to work.
-# 
+#
 # $ brew install bash
 # $ sudo -i
 # # echo "$(brew --prefix)/bin/bash" >> /etc/shells
 # # exit
 # $ chsh -s $(brew --prefix)/bin/bash
-# 
+#
 shopt -s globstar
 
 
-# 
+#
 # Make sure the terminal wraps the lines correctly after resizing the window.
 # From the Bash man page:
 #
@@ -39,9 +39,9 @@ shopt -s globstar
 shopt -s checkwinsize
 
 
-# 
+#
 # aliases
-# 
+#
 
 # A - include starting with ".", ignore "." and ".."
 # F - show "/" at dirs + others
@@ -63,9 +63,9 @@ alias sshfsvm='sshfs -p 3022 stefan@127.0.0.1: ~/vm'
 alias sshfsmbp='sshfs -p 22 stefan@10.0.2.2: ~/mbp'
 
 
-# 
+#
 # Bash completion
-# 
+#
 if [ -f /usr/share/bash-completion/bash_completion ]; then
   . /usr/share/bash-completion/bash_completion
 elif [ -f /etc/bash_completion ]; then
@@ -75,13 +75,13 @@ elif [ -f /usr/local/etc/bash_completion ]; then
 fi
 
 
-# 
+#
 # Git
 # - Bash completion
 # - extended bash prompt
-# 
+#
 # see sourced files for documentation
-# 
+#
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=
@@ -92,19 +92,19 @@ source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
 
-# 
+#
 # Customize Bash prompt
-# 
+#
 # see: http://unix.stackexchange.com/a/193660
-# 
+#
 function color_bash_prompt {
-  # 
+  #
   # Color definitions
-  # 
+  #
   # usage: \[$(color_name)\]
   # see: http://unix.stackexchange.com/questions/140610/using-variables-to-store-terminal-color-codes-for-ps1#comment227276_140615
   #      http://stackoverflow.com/a/6086978
-  # 
+  #
   local black="$(tput setaf 0 2>/dev/null || echo '\e[0;30m')"
   local red="$(tput setaf 1 2>/dev/null || echo '\e[0;31m')"
   local green="$(tput setaf 2 2>/dev/null || echo '\e[0;32m')"
@@ -152,15 +152,23 @@ function color_bash_prompt {
   local git_prompt="\[$magenta\]$git_prompt_exec"
   local right_angle="\[$green\]>\[$reset\]"
 
-  # $user:host ~/dir/repo (master)> 
+  # $user:host ~/dir/repo (master)>
   export PS1="$hash_or_dollar$username$colon$short_hostname $working_dir $git_prompt$right_angle "
 }
 color_bash_prompt
 
+#
+# Function to set title of a console tab.
+# Usage:
+#  $ settitle unit tests
+#
+function settitle {
+    echo -ne "\033]0;"$*"\007"
+}
 
-# 
+#
 # Machine-specific extras
-# 
+#
 if [ -f ~/.bash_extra.sh ]; then
   . ~/.bash_extra.sh
 fi
