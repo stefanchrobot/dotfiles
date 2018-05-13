@@ -5,8 +5,7 @@
 The file `com.googlecode.iterm2.plist` contains saved preferences from iTerm2.
 The "Default" profile contains the following tweaks:
 
-- Colors > Color preset...: base16-tomorrow
-- Colors > Basic Colors > Selection: 5a6066
+- Colors > Color preset...: ayu-mirage.itermcolors
 - Text > Font: 13 pt Menlo Regular, Vertical Spacing: 105%
 - Text > Text Rendering > Use thin strokes for anti-aliased text: Never (makes the text thicker)
 
