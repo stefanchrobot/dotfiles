@@ -6,14 +6,19 @@
   default = simple
 
 [alias]
+  fetchx = fetch --tags
   commitx = !git add -A && git commit -m
   fixup = commit --fixup
   amend = commit --amend
   amendx = commit --amend --no-edit
   mergex = merge --no-ff
+  pullm = !git checkout master && git pull && git checkout -
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lolm = log --graph --decorate --pretty=oneline --abbrev-commit master..
+  lold = log --graph --decorate --pretty=oneline --abbrev-commit develop..
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  freshm = !git checkout master && git pull
+  freshc = !git checkout master && git pull && git checkout - && git merge master
 
 [color]
   ui = auto
