@@ -2,7 +2,6 @@
 
 DOTFILES_DIR=$( cd $(dirname $0) ; pwd -P )
 
-
 files_to_link=(
   ".gitconfig"
   ".git-completion.bash"
@@ -12,7 +11,6 @@ files_to_link=(
   ".bash_profile"
   ".bash_logout"
 );
-
 
 if [[ $1 != "--overwrite" ]]; then
   echo "WARNING: This script will overwrite existing files or links in your home dir."
