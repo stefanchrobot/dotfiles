@@ -1,63 +1,18 @@
 [user]
-  name = Stefan Chrobot
-  email = stefan@chrobot.io
-
-[push]
-  default = simple
-
-[alias]
-  fetchx = fetch --tags
-  commitx = !git add -A && git commit -m
-  fixup = commit --fixup
-  amend = commit --amend
-  amendx = commit --amend --no-edit
-  mergex = merge --no-ff
-  pullm = !git checkout master && git pull && git checkout -
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lolm = log --graph --decorate --pretty=oneline --abbrev-commit master..
-  lold = log --graph --decorate --pretty=oneline --abbrev-commit development..
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  freshm = !git checkout master && git pull
-  freshc = !git checkout master && git pull && git checkout - && git merge master
-
-[color]
-  ui = auto
-  branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
-
-[merge]
-  keepBackup = false
-  guitool = p4merge
-
-[mergetool]
-  prompt = false
-
-[mergetool "p4merge"]
-  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-  keepTemporaries = false
-  trustExitCode = false
-  keepBackup = false
-
-[diff]
-  guitool = p4merge
-
-[difftool]
-  prompt = false
-
-[difftool "p4merge"]
-  cmd = p4merge "$LOCAL" "$REMOTE"
-  keepTemporaries = false
-  trustExitCode = false
-  keepBackup = false
-[core]
-	excludesfile = /Users/stefan/.gitignore
-[pull]
-	ff = only
+	name = Stefan Chrobot
+	email = stefan@chrobot.io
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[pull]
+	ff = only
+[alias]
+	fixup = commit --fixup
+	amend = commit --amend
+	amendx = commit --amend --no-edit
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lolm = log --graph --decorate --pretty=oneline --abbrev-commit main..
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
